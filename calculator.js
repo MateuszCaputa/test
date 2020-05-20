@@ -1,19 +1,23 @@
 function calculate() {
-    const a = parseInt(document.querySelector(".number1").value);
-    const b = parseInt(document.querySelector(".number2").value);
+    const a = getNumberValue('.number1');
+    const b = getNumberValue('.number2');
     const operation = document.querySelector("select").value;
+    const result = computeResult(a, b, operation);
+    document.querySelector(".result").innerHTML = result;
+}
 
-    if(operation === "+") {
-        const result = a + b;
-        document.querySelector(".result").innerHTML = result;
-    } else if(operation === "-") {
-        const result = a - b;
-        document.querySelector(".result").innerHTML = result;
-    } else if(operation === "*") {
-        const result = a * b;
-        document.querySelector(".result").innerHTML = result;
-    } else if(operation === "/") {
-        const result = a / b;
-        document.querySelector(".result").innerHTML = result;
+function getNumberValue(selector) {
+    return parseInt(document.querySelector(selector).value);
+}
+
+function computeResult(leftNumber, rightNumber, sign) {
+    if(sign === "+") {
+        return leftNumber + rightNumber;
+    } else if(sign === "-") {
+        return leftNumber - rightNumber;
+    } else if(sign === "*") {
+        return leftNumber * rightNumber;
+    } else if(sign === "/") {
+        return leftNumber / rightNumber;
     }
 }
